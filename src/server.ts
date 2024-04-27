@@ -1,17 +1,29 @@
 import express from 'express'
 import passport from 'passport'
-import routes from './routers'
+import routes from './routers/index.js'
 import session from 'express-session'
 import cors from 'cors'
-import './strategies/local-strategy'
-import './strategies/google-strategy'
-import { SESSION_CONFIG, CORS_CONFIG } from './config'
+import './strategies/local-strategy.js'
+import './strategies/google-strategy.js'
+import { SESSION_CONFIG, CORS_CONFIG } from './config.js'
+import memorystore from 'memorystore'
+
 const server = express()
 
 server.use(cors(CORS_CONFIG))
 server.use(express.json())
 
-server.use(session(SESSION_CONFIG))
+const MemoryStore = memorystore(session)
+server.use(
+  session({
+    ...SESSION_CONFIG,
+    ...{
+      store: new MemoryStore({
+        checkPeriod: 86400000
+      })
+    }
+  })
+)
 
 server.use(passport.initialize())
 server.use(passport.session())
