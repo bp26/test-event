@@ -8,9 +8,6 @@ export const SESSION_CONFIG: SessionOptions = {
   resave: false,
   cookie: {
     maxAge: SESSION_MAX_AGE,
-    httpOnly: true,
-    sameSite: 'none',
-    secure: true,
   },
 };
 
