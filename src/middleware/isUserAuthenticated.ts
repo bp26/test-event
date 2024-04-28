@@ -1,11 +1,16 @@
-import { Request, Response, NextFunction } from 'express'
-import { ResponceMessage, StatusCode } from '../enums/index.js'
-import ApiError from '../utils/apiError.js'
+import { Request, Response, NextFunction } from 'express';
+import { ResponceMessage, StatusCode } from '../enums/index.js';
+import ApiError from '../utils/apiError.js';
 
-export const isUserAuthenticated = (req: Request, res: Response, next: NextFunction) => {
+export const isUserAuthenticated = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  console.log(req.cookies);
   if (!req.isAuthenticated()) {
-    throw new ApiError(StatusCode.UNAUTHORIZED, ResponceMessage.UNAUTHORIZED)
+    throw new ApiError(StatusCode.UNAUTHORIZED, ResponceMessage.UNAUTHORIZED);
   }
 
-  next()
-}
+  next();
+};
