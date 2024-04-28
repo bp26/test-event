@@ -7,12 +7,14 @@ import authService from '../services/authService.js'
 import ApiError from '../utils/apiError.js'
 
 passport.serializeUser((user, done) => {
+  console.log('serialize user', user)
   return done(null, user.id)
 })
 
 passport.deserializeUser(async (id: string, done) => {
   try {
     const user = await authService.getAuthenticatedUser(id)
+    console.log('deserializeUser', user)
 
     return done(null, user)
   } catch (error) {
