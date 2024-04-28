@@ -7,7 +7,8 @@ export const isUserAuthenticated = (
   res: Response,
   next: NextFunction
 ) => {
-  console.log(req.headers.cookie);
+  console.log('session', req.session);
+  console.log('session id', req.sessionID);
 
   if (!req.isAuthenticated()) {
     throw new ApiError(StatusCode.UNAUTHORIZED, ResponceMessage.UNAUTHORIZED);
