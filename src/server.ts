@@ -7,12 +7,14 @@ import './strategies/local-strategy.js';
 import './strategies/google-strategy.js';
 import { SESSION_CONFIG, CORS_CONFIG } from './config.js';
 import memorystore from 'memorystore';
+import cookieParser from 'cookie-parser';
 
 const server = express();
 server.enable('trust proxy');
 
 server.use(cors(CORS_CONFIG));
 server.use(express.json());
+server.use(cookieParser());
 
 const MemoryStore = memorystore(session);
 server.use(
