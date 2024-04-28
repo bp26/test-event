@@ -9,7 +9,8 @@ export const SESSION_CONFIG: SessionOptions = {
   proxy: true,
   cookie: {
     maxAge: SESSION_MAX_AGE,
-    secure: false
+    secure: false,
+    sameSite: 'none'
   }
 }
 
