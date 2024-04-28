@@ -10,6 +10,7 @@ import memorystore from 'memorystore';
 import cookieParser from 'cookie-parser';
 
 const server = express();
+server.enable('trust proxy');
 
 server.use(cors(CORS_CONFIG));
 server.use(express.json());
