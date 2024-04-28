@@ -9,6 +9,7 @@ export const SESSION_CONFIG: SessionOptions = {
   cookie: {
     maxAge: SESSION_MAX_AGE,
     secure: true,
+    sameSite: 'none',
   },
 };
 
