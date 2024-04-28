@@ -4,8 +4,8 @@ import { SESSION_MAX_AGE, CLIENT_BASE_URL } from './constants/index.js';
 
 export const SESSION_CONFIG: SessionOptions = {
   secret: process.env.SESSION_SECRET || '',
-  saveUninitialized: true,
-  resave: true,
+  saveUninitialized: false,
+  resave: false,
   proxy: true,
   cookie: {
     maxAge: SESSION_MAX_AGE,
