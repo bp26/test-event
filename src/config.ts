@@ -6,7 +6,6 @@ export const SESSION_CONFIG: SessionOptions = {
   secret: process.env.SESSION_SECRET || '',
   saveUninitialized: false,
   resave: false,
-  proxy: true,
   cookie: {
     maxAge: SESSION_MAX_AGE,
     httpOnly: true,
